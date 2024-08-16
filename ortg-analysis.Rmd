@@ -1,0 +1,32 @@
+---
+title: "An Analysis of ORTG in Lineups"
+author: "Jeremy Patak"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(include = FALSE)
+```
+
+## Introduction
+
+*Basketball on Paper* by Dean Oliver is the most classic book on basketball analytics available, and odds are that if you're reading this, you've probably read it. I was recently looking back through parts of it and really enjoyed **Chapter 19: The Problem with Scorers**.
+
+Oliver starts the chapter by talking about a young star named Allen Iverson (Yeah, the book is pretty old now). He talks about Iverson's high usage, and that if he focused on a better shot selection, he could improve his efficiency and his individual offensive rating. However, this was a bait-and-switch by Oliver to shift our eyes from what is actually important. He goes on to prove that the ORTG of the *team* is actually better when Iverson carries a very high usage, because it allows his teammates to essentially max out their efficient. He finishes out the chapter by discussing how you can use these principles to "optimize offense".
+
+Over 20 years later, I wanted to take a stab at these ideas and analyze some moves that happened this NBA offseason through the lens of *Basketball on Paper, Chapter 19*.
+
+## Offensive Skill Curves
+```{r data}
+library(pacman)
+p_load(tidyverse)
+
+player_data = read.csv("player_game_data.csv")
+```
+
+The offensive skill curve is the building block of this chapter by Oliver. It essentially shows how a player can produce higher offensive ratings when they don't have to carry as much of the load on offense. Or, vice versa, it shows that the higher usage a player accounts for, the less efficient they can be with it.
+
+To start my analysis, I want to get into how these offensive skill curves are constructed.
+
+
